@@ -6,7 +6,9 @@
         <h1>Products</h1>
     </div>
     <div class="col col-2">
+        @can('add_products')
         <a href="{{route('products_edit')}}" class="btn btn-success form-control">Add Product</a>
+        @endcan
     </div>
 </div>
 <form>
@@ -57,10 +59,14 @@
 					        <h3>{{$product->name}}</h3>
 					    </div>
 					    <div class="col col-2">
+                            @can('edit_products')
 					        <a href="{{route('products_edit', $product->id)}}" class="btn btn-success form-control">Edit</a>
+                            @endcan
 					    </div>
 					    <div class="col col-2">
+                            @can('delete_products')
 					        <a href="{{route('products_delete', $product->id)}}" class="btn btn-danger form-control">Delete</a>
+                            @endcan
 					    </div>
 					</div>
 
