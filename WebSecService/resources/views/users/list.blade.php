@@ -9,7 +9,7 @@
 <form>
     <div class="row">
         <div class="col col-sm-2">
-            <input name="keywords" type="text"  class="form-control" placeholder="Search Keywords" value="{{ request()->keywords }}" />
+            <input name="keywords" type="text" class="form-control" placeholder="Search Keywords" value="{{ request()->keywords }}" />
         </div>
         <div class="col col-sm-1">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -46,6 +46,9 @@
           @can('edit_users')
           <a class="btn btn-primary" href='{{route('users_edit', [$user->id])}}'>Edit</a>
           @endcan
+          @if(auth()->user()->hasRole('Employee') && $user->hasRole('Customer'))
+          <a class="btn btn-success" href='{{route('users_add_credit', [$user->id])}}'>Add Credit</a>
+          @endif
           @can('admin_users')
           <a class="btn btn-primary" href='{{route('edit_password', [$user->id])}}'>Change Password</a>
           @endcan
@@ -58,6 +61,4 @@
     </table>
   </div>
 </div>
-
-
 @endsection

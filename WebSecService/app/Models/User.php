@@ -25,6 +25,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'credit',
+        'created_by_admin',
     ];
 
     /**
@@ -42,6 +44,12 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     protected function casts(): array
     {
         return [

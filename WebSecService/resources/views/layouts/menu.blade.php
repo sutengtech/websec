@@ -27,6 +27,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('profile')}}">{{auth()->user()->name}}</a>
             </li>
+            @if(auth()->user()->hasRole('Customer'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('purchases')}}">My Purchases</a>
+            </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="{{route('do_logout')}}">Logout</a>
             </li>
