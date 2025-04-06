@@ -3,6 +3,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ProductsController;
 use App\Http\Controllers\Web\UsersController;
+use App\Http\Controllers\Web\PurchasesController;
 
 Route::get('register', [UsersController::class, 'register'])->name('register');
 Route::post('register', [UsersController::class, 'doRegister'])->name('do_register');
@@ -17,7 +18,9 @@ Route::get('users/delete/{user}', [UsersController::class, 'delete'])->name('use
 Route::get('users/edit_password/{user?}', [UsersController::class, 'editPassword'])->name('edit_password');
 Route::post('users/save_password/{user}', [UsersController::class, 'savePassword'])->name('save_password');
 
-
+// Admin routes to add users
+Route::get('users/add', [UsersController::class, 'addUser'])->name('users_add');
+Route::post('users/add', [UsersController::class, 'saveUser'])->name('users_save_new');
 
 Route::get('products', [ProductsController::class, 'list'])->name('products_list');
 Route::get('products/edit/{product?}', [ProductsController::class, 'edit'])->name('products_edit');
@@ -45,3 +48,9 @@ Route::get('/prime', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
+// Purchase routes
+Route::get('my-purchases', [PurchasesController::class, 'list'])->name('purchases_list');
+Route::get('products/{product}/purchase', [PurchasesController::class, 'showPurchaseForm'])->name('purchase_form');
+Route::post('products/{product}/purchase', [PurchasesController::class, 'purchase'])->name('do_purchase');
+Route::post('users/{user}/add-credit', [PurchasesController::class, 'addCredit'])->name('add_credit');

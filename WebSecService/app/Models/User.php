@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class User extends Authenticatable
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'credit',
     ];
 
     /**
@@ -47,6 +49,15 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'credit' => 'decimal:2',
         ];
+    }
+    
+    /**
+     * Get the purchases for the user.
+     */
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
     }
 }

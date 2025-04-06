@@ -19,5 +19,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        
+        // Run the RoleAndPermissionSeeder
+        $this->call(RoleAndPermissionSeeder::class);
+        
+        // Run the permission display name updater
+        $this->call(UpdatePermissionDisplayNamesSeeder::class);
+        
+        // Clean up redundant permissions
+        $this->call(CleanupPermissionsSeeder::class);
     }
 }
