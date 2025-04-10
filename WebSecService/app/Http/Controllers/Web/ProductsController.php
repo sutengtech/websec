@@ -22,6 +22,11 @@ class ProductsController extends Controller {
 
 		$query = Product::select("products.*");
 
+		// Only show non-held products to customers
+		if (auth()->check() && !auth()->user()->hasRole(['Admin', 'Employee'])) {
+            $query->where('hold', false);
+        }
+
 		$query->when($request->keywords, 
 		fn($q)=> $q->where("name", "like", "%$request->keywords%"));
 
@@ -124,4 +129,28 @@ class ProductsController extends Controller {
 
 		return redirect()->route('products_list')->with('success', 'Product deleted successfully.');
 	}
+
+	public function hold(Request $request, Product $product) {
+        // checking for permission to hold products
+        if(!auth()->user()->hasPermissionTo('hold_products')) {
+            abort(403, 'You do not have permission to hold products.');
+        }
+
+        $product->hold = true;
+        $product->save();
+
+        return redirect()->route('products_list')->with('success', "Product '{$product->name}' is now on hold.");
+    }
+
+    public function unhold(Request $request, Product $product) {
+        // to check for permission to hold products
+        if(!auth()->user()->hasPermissionTo('hold_products')) {
+            abort(403, 'You do not have permission to unhold products.');
+        }
+
+        $product->hold = false;
+        $product->save();
+
+        return redirect()->route('products_list')->with('success', "Product '{$product->name}' is now available.");
+    }
 } 

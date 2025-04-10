@@ -13,7 +13,8 @@ class Product extends Model  {
         'model',
         'description',
         'photo',
-        'stock'
+        'stock',
+        'hold'
     ];
     
     /**

@@ -28,6 +28,7 @@ class RoleAndPermissionSeeder extends Seeder
             'view_own_profile' => 'View Own Profile',
             'manage_stock' => 'Manage Stock',
             'manage_customer_credit' => 'Manage Customer Credit',
+            'hold_products' => 'Hold Products',
         ];
 
         foreach ($permissions as $name => $displayName) {
@@ -49,7 +50,7 @@ class RoleAndPermissionSeeder extends Seeder
         // Assign specific permissions to Employee
         $employeePermissions = [
             'add_products', 'edit_products', 'show_users', 'edit_users',
-            'view_products', 'manage_stock', 'manage_customer_credit'
+            'view_products', 'manage_stock', 'manage_customer_credit', 'hold_products'
         ];
         $employeeRole->syncPermissions($employeePermissions);
         

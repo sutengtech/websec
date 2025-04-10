@@ -26,6 +26,8 @@ Route::get('products', [ProductsController::class, 'list'])->name('products_list
 Route::get('products/edit/{product?}', [ProductsController::class, 'edit'])->name('products_edit');
 Route::post('products/save/{product?}', [ProductsController::class, 'save'])->name('products_save');
 Route::get('products/delete/{product}', [ProductsController::class, 'delete'])->name('products_delete');
+Route::get('products/hold/{product}', [ProductsController::class, 'hold'])->name('products_hold');
+Route::get('products/unhold/{product}', [ProductsController::class, 'unhold'])->name('products_unhold');
 
 Route::get('/', function () {
     return view('welcome');

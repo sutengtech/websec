@@ -31,22 +31,22 @@
                             <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
                             <input name="min_price" type="number" step="0.01" class="form-control" placeholder="Min Price" value="{{ request()->min_price }}"/>
                             <input name="max_price" type="number" step="0.01" class="form-control" placeholder="Max Price" value="{{ request()->max_price }}"/>
-                        </div>
-                    </div>
+        </div>
+        </div>
                     <div class="col-md-3">
                         <div class="d-flex">
                             <select name="order_by" class="form-select me-2">
-                                <option value="" {{ request()->order_by==""?"selected":"" }} disabled>Order By</option>
-                                <option value="name" {{ request()->order_by=="name"?"selected":"" }}>Name</option>
-                                <option value="price" {{ request()->order_by=="price"?"selected":"" }}>Price</option>
+                <option value="" {{ request()->order_by==""?"selected":"" }} disabled>Order By</option>
+                <option value="name" {{ request()->order_by=="name"?"selected":"" }}>Name</option>
+                <option value="price" {{ request()->order_by=="price"?"selected":"" }}>Price</option>
                                 <option value="stock" {{ request()->order_by=="stock"?"selected":"" }}>Stock</option>
-                            </select>
-                            <select name="order_direction" class="form-select">
+            </select>
+            <select name="order_direction" class="form-select">
                                 <option value="" {{ request()->order_direction==""?"selected":"" }} disabled>Direction</option>
-                                <option value="ASC" {{ request()->order_direction=="ASC"?"selected":"" }}>ASC</option>
-                                <option value="DESC" {{ request()->order_direction=="DESC"?"selected":"" }}>DESC</option>
-                            </select>
-                        </div>
+                <option value="ASC" {{ request()->order_direction=="ASC"?"selected":"" }}>ASC</option>
+                <option value="DESC" {{ request()->order_direction=="DESC"?"selected":"" }}>DESC</option>
+            </select>
+        </div>
                     </div>
                     <div class="col-md-2">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -58,14 +58,14 @@
                             </a>
                         </div>
                     </div>
-                </div>
+        </div>
             </form>
         </div>
     </div>
 
     <!-- Products Grid -->
     <div class="row row-cols-1 row-cols-md-2 g-4">
-        @foreach($products as $product)
+@foreach($products as $product)
         <div class="col">
             <div class="card card-dashboard h-100 shadow-sm">
                 <div class="row g-0 h-100">
@@ -77,7 +77,16 @@
                             <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h5 class="card-title fw-bold mb-0">{{$product->name}}</h5>
                                 <span class="badge bg-primary rounded-pill">{{$product->code}}</span>
+                </div>
+                            
+                            @if($product->hold)
+                            <div class="mb-2">
+                                <span class="badge bg-secondary">
+                                    <i class="bi bi-eye-slash me-1"></i> On Hold
+                                </span>
+                                <small class="text-muted ms-1">Not visible to customers</small>
                             </div>
+                            @endif
                             
                             <p class="card-text text-truncate-2 mb-2">{{$product->description}}</p>
                             
@@ -86,12 +95,12 @@
                                     <i class="bi bi-tag-fill text-primary me-2"></i>
                                     <span class="fw-bold">Model:</span>
                                     <span class="ms-2">{{$product->model}}</span>
-                                </div>
+					    </div>
                                 <div class="d-flex align-items-center mb-1">
                                     <i class="bi bi-currency-dollar text-success me-2"></i>
                                     <span class="fw-bold">Price:</span>
                                     <span class="ms-2 fs-5">${{ number_format($product->price, 2) }}</span>
-                                </div>
+					    </div>
                                 <div class="d-flex align-items-center">
                                     <i class="bi bi-box-seam me-2 
                                         {{ $product->stock > 10 ? 'text-success' : ($product->stock > 0 ? 'text-warning' : 'text-danger') }}"></i>
@@ -110,10 +119,10 @@
                                     <button type="button" class="btn btn-sm btn-outline-primary ms-2" data-bs-toggle="modal" data-bs-target="#stockModal{{ $product->id }}">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
-                                    @endcan
-                                </div>
-                            </div>
-                            
+                            @endcan
+					    </div>
+					</div>
+
                             <div class="mt-auto">
                                 <div class="d-flex justify-content-between">
                                     <div>
@@ -126,6 +135,17 @@
                                         <a href="{{route('products_delete', $product->id)}}" class="btn btn-sm btn-outline-danger">
                                             <i class="bi bi-trash me-1"></i> Delete
                                         </a>
+                                        @endcan
+                                        @can('hold_products')
+                                            @if($product->hold)
+                                            <a href="{{route('products_unhold', $product->id)}}" class="btn btn-sm btn-outline-success">
+                                                <i class="bi bi-eye me-1"></i> Unhold
+                                            </a>
+                                            @else
+                                            <a href="{{route('products_hold', $product->id)}}" class="btn btn-sm btn-outline-warning">
+                                                <i class="bi bi-eye-slash me-1"></i> Hold
+                                            </a>
+                                            @endif
                                         @endcan
                                     </div>
                                     
@@ -205,7 +225,7 @@
             </div>
         </div>
     </div>
-    @endforeach
+@endforeach
 @endcan
 
 <script>
