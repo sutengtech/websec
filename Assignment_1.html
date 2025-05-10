@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function generateTable() {
+            let table = document.getElementById("multiplicationTable");
+            for (let i = 1; i <= 10; i++) {
+                let row = table.insertRow();
+                for (let j = 1; j <= 10; j++) {
+                    let cell = row.insertCell();
+                    cell.innerHTML = `${i} * ${j} = ${i * j}`;
+                }
+            }
+        }
+        window.onload = generateTable;
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Multiplication Table</h2>
+        <table id="multiplicationTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Multiplication</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
