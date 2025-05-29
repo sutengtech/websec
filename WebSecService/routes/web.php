@@ -2,6 +2,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ProductsController;
+use App\Http\Controllers\Web\GradesController;
+use App\Http\Controllers\Web\CoursesController;
 use App\Http\Controllers\Web\UsersController;
 
 Route::get('register', [UsersController::class, 'register'])->name('register');
@@ -30,6 +32,16 @@ Route::get('products', [ProductsController::class, 'list'])->name('products_list
 Route::get('products/edit/{product?}', [ProductsController::class, 'edit'])->name('products_edit');
 Route::post('products/save/{product?}', [ProductsController::class, 'save'])->name('products_save');
 Route::get('products/delete/{product}', [ProductsController::class, 'delete'])->name('products_delete');
+
+Route::get('grades', [GradesController::class, 'list'])->name('grades_list');
+Route::get('grades/edit/{grade?}', [GradesController::class, 'edit'])->name('grades_edit');
+Route::post('grades/save/{grade?}', [GradesController::class, 'save'])->name('grades_save');
+Route::get('grades/delete/{grade}', [GradesController::class, 'delete'])->name('grades_delete');
+
+Route::get('courses', [CoursesController::class, 'list'])->name('courses_list');
+Route::get('courses/edit/{course?}', [CoursesController::class, 'edit'])->name('courses_edit');
+Route::post('courses/save/{course?}', [CoursesController::class, 'save'])->name('courses_save');
+Route::get('courses/delete/{course}', [CoursesController::class, 'delete'])->name('courses_delete');
 
 Route::get('/', function () {
     return view('welcome');

@@ -1,9 +1,8 @@
 @extends('layouts.master')
-@section('title', 'Prime Numbers')
+@section('title', 'Edit Product')
 @section('content')
 
 <form action="{{route('products_save', $product->id)}}" method="post">
-    {{ csrf_field() }}
     {{ csrf_field() }}
     @foreach($errors->all() as $error)
     <div class="alert alert-danger">
