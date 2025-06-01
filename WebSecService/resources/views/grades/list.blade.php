@@ -4,6 +4,7 @@
 @php
     use Illuminate\Support\Str;
 @endphp
+
 <div class="row my-4">
     <div class="col col-10">
         <h1>Grades</h1>
@@ -12,6 +13,7 @@
         @can('edit_exgrades')
         <a href="{{route('grades_edit')}}" class="btn btn-success form-control">Add Grade</a>
         @endcan
+        <a href="{{route('grades_edit')}}" class="btn btn-success form-control">Add Grade</a>
     </div>
 </div>
 <form>
@@ -56,6 +58,8 @@
                     @endcan
                     <th scope="col">Freezed</th>
                     <th scope="col">Actions</th>
+                    <th scope="col">Freezed</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             @foreach($grades as $grade)
@@ -132,6 +136,14 @@
                         </div>
                         @endif
                         @endcan
+                <td scope="col">
+                    <div class="row mb-2">
+                        <div class="col col-4">
+                            <a href="{{route('grades_edit', $grade->id)}}" class="btn btn-success form-control">Edit</a>
+                        </div>
+                        <div class="col col-4">
+                            <a href="{{route('grades_delete', $grade->id)}}" class="btn btn-danger form-control">Delete</a>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -219,5 +231,6 @@
     @endif
     @endcan
 @endforeach
+
 
 @endsection

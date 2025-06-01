@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 use DB;
 
 use App\Http\Controllers\Controller;
@@ -36,6 +37,7 @@ class GradesController extends Controller {
 		if (!$user->hasPermissionTo('show_exgrades') && $user->hasPermissionTo('view_own_exgrades')) {
 			$query->where('grades.user_id', $user->id);
 		}
+
 
 		$query->when($request->keywords, 
 		fn($q)=> $q->where(function($subQuery) use($request){
@@ -90,6 +92,7 @@ class GradesController extends Controller {
 			$grade->appeal_status = 'closed';
 		}
 		
+		$grade = $grade??new Grade();
 		$grade->fill($request->all());
 		$grade->save();
 
@@ -128,6 +131,7 @@ class GradesController extends Controller {
 		if(!Auth::user()->hasPermissionTo('delete_exgrades')) {
 			abort(403, 'You do not have permission to delete student grades');
 		}
+
 
 		$grade->delete();
 
@@ -192,3 +196,5 @@ class GradesController extends Controller {
 		return redirect()->route('grades_list')->with('success', 'Appeal response submitted successfully');
 	}
 }
+} 
+

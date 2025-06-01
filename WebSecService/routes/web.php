@@ -42,6 +42,7 @@ Route::get('grades/delete/{grade}', [GradesController::class, 'delete'])->name('
 Route::post('grades/{grade}/appeal', [GradesController::class, 'submitAppeal'])->name('grades_appeal_submit');
 Route::post('grades/{grade}/appeal/respond', [GradesController::class, 'respondToAppeal'])->name('grades_appeal_respond');
 
+
 Route::get('courses', [CoursesController::class, 'list'])->name('courses_list');
 Route::get('courses/edit/{course?}', [CoursesController::class, 'edit'])->name('courses_edit');
 Route::post('courses/save/{course?}', [CoursesController::class, 'save'])->name('courses_save');

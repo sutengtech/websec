@@ -60,6 +60,7 @@ class UsersController extends Controller {
 	    // Auto-assign exstudent role to newly registered users
 	    $user->assignRole('exstudent');
 
+
         /*
         $title = "Verification Link";
         $token = Crypt::encryptString(json_encode(['id' => $user->id, 'email' => $user->email]));
