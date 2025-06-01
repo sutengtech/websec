@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 use DB;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 use Carbon\Carbon;
 
 
@@ -24,7 +24,7 @@ class UsersController extends Controller {
 	use ValidatesRequests;
 
     public function list(Request $request) {
-        if(!auth()->user()->hasPermissionTo('show_users'))abort(401);
+        if(!Auth::user()->hasPermissionTo('show_users'))abort(401);
         $query = User::select('*');
         $query->when($request->keywords, 
         fn($q)=> $q->where("name", "like", "%$request->keywords%"));
@@ -97,9 +97,9 @@ class UsersController extends Controller {
 
     public function profile(Request $request, User $user = null) {
 
-        $user = $user??auth()->user();
-        if(auth()->id()!=$user->id) {
-            if(!auth()->user()->hasPermissionTo('show_users')) abort(401);
+        $user = $user??Auth::user();
+        if(Auth::id()!=$user->id) {
+            if(!Auth::user()->hasPermissionTo('show_users')) abort(401);
         }
 
         $permissions = [];
@@ -117,15 +117,15 @@ class UsersController extends Controller {
 
     public function edit(Request $request, User $user = null) {
    
-        $user = $user??auth()->user();
-        if(auth()->id()!=$user?->id) {
-            if(!auth()->user()->hasPermissionTo('edit_users')) abort(401);
+        $user = $user??Auth::user();
+        if(Auth::id()!=$user?->id) {
+            if(!Auth::user()->hasPermissionTo('edit_users')) abort(401);
         }
     
         $roles = [];
         foreach(Role::all() as $role) {
-            // Only admin can see and assign the 'exteacher' role
-            if($role->name === 'exteacher' && !auth()->user()->hasRole('Admin')) {
+            // Only admin can see and assign the 'exteacher', 'exmanager', and 'exstudent' roles
+            if(in_array($role->name, ['exteacher', 'exmanager', 'exstudent']) && !Auth::user()->hasRole('Admin')) {
                 continue;
             }
             $role->taken = ($user->hasRole($role->name));
@@ -144,18 +144,22 @@ class UsersController extends Controller {
 
     public function save(Request $request, User $user) {
 
-        if(auth()->id()!=$user->id) {
-            if(!auth()->user()->hasPermissionTo('show_users')) abort(401);
+        if(Auth::id()!=$user->id) {
+            if(!Auth::user()->hasPermissionTo('show_users')) abort(401);
         }
 
         $user->name = $request->name;
         $user->save();
 
-        if(auth()->user()->hasPermissionTo('admin_users')) {
+        if(Auth::user()->hasPermissionTo('admin_users')) {
 
-            // Check if user is trying to assign 'exteacher' role without being admin
-            if($request->roles && in_array('exteacher', $request->roles) && !auth()->user()->hasRole('Admin')) {
-                abort(403, 'Only admins can assign the exteacher role');
+            // Check if user is trying to assign restricted roles without being admin
+            $restrictedRoles = ['exteacher', 'exmanager', 'exstudent'];
+            if($request->roles) {
+                $attemptingRestrictedRoles = array_intersect($restrictedRoles, $request->roles);
+                if(!empty($attemptingRestrictedRoles) && !Auth::user()->hasRole('Admin')) {
+                    abort(403, 'Only admins can assign exteacher, exmanager, and exstudent roles');
+                }
             }
 
             $user->syncRoles($request->roles);
@@ -172,7 +176,7 @@ class UsersController extends Controller {
 
     public function delete(Request $request, User $user) {
 
-        if(!auth()->user()->hasPermissionTo('delete_users')) abort(401);
+        if(!Auth::user()->hasPermissionTo('delete_users')) abort(401);
 
         $user->delete();
 
@@ -181,9 +185,9 @@ class UsersController extends Controller {
 
     public function editPassword(Request $request, User $user = null) {
 
-        $user = $user??auth()->user();
-        if(auth()->id()!=$user?->id) {
-            if(!auth()->user()->hasPermissionTo('edit_users')) abort(401);
+        $user = $user??Auth::user();
+        if(Auth::id()!=$user?->id) {
+            if(!Auth::user()->hasPermissionTo('edit_users')) abort(401);
         }
 
         return view('users.edit_password', compact('user'));
@@ -191,7 +195,7 @@ class UsersController extends Controller {
 
     public function savePassword(Request $request, User $user) {
 
-        if(auth()->id()==$user?->id) {
+        if(Auth::id()==$user?->id) {
             
             $this->validate($request, [
                 'password' => ['required', 'confirmed', Password::min(8)->numbers()->letters()->mixedCase()->symbols()],
@@ -203,7 +207,7 @@ class UsersController extends Controller {
                 return redirect('/');
             }
         }
-        else if(!auth()->user()->hasPermissionTo('edit_users')) {
+        else if(!Auth::user()->hasPermissionTo('edit_users')) {
 
             abort(401);
         }

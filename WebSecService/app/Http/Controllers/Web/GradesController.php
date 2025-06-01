@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 use App\Http\Controllers\Controller;
@@ -21,7 +22,7 @@ class GradesController extends Controller {
 	public function list(Request $request) {
 
 		// Check if user has permission to view grades
-		if(!auth()->user()->hasPermissionTo('show_exgrades')) {
+		if(!Auth::user()->hasPermissionTo('show_exgrades')) {
 			abort(403, 'You do not have permission to view student grades');
 		}
 
@@ -46,7 +47,7 @@ class GradesController extends Controller {
 	public function edit(Request $request, Grade $grade = null) {
 
 		// Check if user has permission to edit grades
-		if(!auth()->user()->hasPermissionTo('edit_exgrades')) {
+		if(!Auth::user()->hasPermissionTo('edit_exgrades')) {
 			abort(403, 'You do not have permission to edit student grades');
 		}
 
@@ -61,7 +62,7 @@ class GradesController extends Controller {
 	public function save(Request $request, Grade $grade = null) {
 
 		// Check if user has permission to edit grades
-		if(!auth()->user()->hasPermissionTo('edit_exgrades')) {
+		if(!Auth::user()->hasPermissionTo('edit_exgrades')) {
 			abort(403, 'You do not have permission to edit student grades');
 		}
 
@@ -97,7 +98,7 @@ class GradesController extends Controller {
 	public function delete(Request $request, Grade $grade) {
 
 		// Check if user has permission to delete grades
-		if(!auth()->user()->hasPermissionTo('delete_exgrades')) {
+		if(!Auth::user()->hasPermissionTo('delete_exgrades')) {
 			abort(403, 'You do not have permission to delete student grades');
 		}
 

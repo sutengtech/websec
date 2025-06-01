@@ -74,9 +74,16 @@ class RolesAndPermissionsSeeder extends Seeder
         // Create exmanager role if it doesn't exist
         $exmanagerRole = Role::firstOrCreate(['name' => 'exmanager', 'guard_name' => 'web']);
         
-        // Assign permissions to exmanager role (can manage grades but has broader permissions)
-        $exmanagerPermissions = ['show_exgrades', 'edit_exgrades', 'delete_exgrades', 'show_users', 'view_own_profile'];
+        // Assign permissions to exmanager role (show and delete grades only)
+        $exmanagerPermissions = ['show_exgrades', 'delete_exgrades', 'view_own_profile'];
         $exmanagerRole->syncPermissions($exmanagerPermissions);
+
+        // Create exstudent role if it doesn't exist
+        $exstudentRole = Role::firstOrCreate(['name' => 'exstudent', 'guard_name' => 'web']);
+        
+        // Assign permissions to exstudent role (view own grades only)
+        $exstudentPermissions = ['show_exgrades', 'view_own_profile'];
+        $exstudentRole->syncPermissions($exstudentPermissions);
 
         $this->command->info('Roles and permissions created successfully.');
     }
