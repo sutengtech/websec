@@ -3,4 +3,4 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-email.1 = student@final-exam.com
+email.1 = 230101033@final-exam.com

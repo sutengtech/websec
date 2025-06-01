@@ -18,13 +18,13 @@
 - DNS: final-exam.com
 
 ## User Certificate
-**User:** student@final-exam.com
-**Files:** `student@final-exam.com.crt` and `student@final-exam.com.key`
+**User:** 230101033@final-exam.com
+**Files:** `230101033@final-exam.com.crt` and `230101033@final-exam.com.key`
 **Validity:** 3 months (June 1, 2025 - August 30, 2025)
 **Key Size:** 2048-bit RSA
-**Subject:** C=US, ST=California, L=San Francisco, O=Final Exam Organization, OU=Students, CN=student@final-exam.com, emailAddress=student@final-exam.com
+**Subject:** C=US, ST=California, L=San Francisco, O=Final Exam Organization, OU=Students, CN=230101033@final-exam.com, emailAddress=230101033@final-exam.com
 **Subject Alternative Names:** 
-- email: student@final-exam.com
+- email: 230101033@final-exam.com
 
 ## File Structure
 ```
@@ -37,12 +37,12 @@ certificates/
 ├── www.final-exam.com.csr              # Website certificate signing request
 ├── www.final-exam.com.cnf              # Website certificate configuration
 ├── www.final-exam.com.ext              # Website certificate extensions
-├── student@final-exam.com.crt          # User certificate (public)
-├── student@final-exam.com.key          # User private key
-├── student@final-exam.com.csr          # User certificate signing request
-├── student@final-exam.com.cnf          # User certificate configuration
-├── student@final-exam.com.ext          # User certificate extensions
-└── student@final-exam.com.pfx          # User certificate in PKCS#12 format
+├── 230101033@final-exam.com.crt          # User certificate (public)
+├── 230101033@final-exam.com.key          # User private key
+├── 230101033@final-exam.com.csr          # User certificate signing request
+├── 230101033@final-exam.com.cnf          # User certificate configuration
+├── 230101033@final-exam.com.ext          # User certificate extensions
+└── 230101033@final-exam.com.pfx          # User certificate in PKCS#12 format
 ```
 
 ## Usage Instructions
@@ -53,7 +53,7 @@ certificates/
 openssl verify -CAfile ca.crt www.final-exam.com.crt
 
 # Verify user certificate against CA
-openssl verify -CAfile ca.crt student@final-exam.com.crt
+openssl verify -CAfile ca.crt 230101033@final-exam.com.crt
 
 # View certificate details
 openssl x509 -in <certificate-file> -text -noout
@@ -79,5 +79,5 @@ openssl x509 -in <certificate-file> -text -noout
 ```
 Final Exam Root (Root CA)
 ├── www.final-exam.com (Website Certificate)
-└── student@final-exam.com (User Certificate)
+└── 230101033@final-exam.com (User Certificate)
 ```
