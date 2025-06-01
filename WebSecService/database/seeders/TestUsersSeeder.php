@@ -9,10 +9,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class TestUsersSeeder extends Seeder
-{
-    /**
+{    /**
      * Run the database seeds.
-     */    public function run(): void
+     */
+    public function run(): void
     {
         // Create admin user
         $admin = User::firstOrCreate([
@@ -35,14 +35,14 @@ class TestUsersSeeder extends Seeder
         ], [
             'name' => 'Teacher User',
             'password' => Hash::make('Qwe!2345'),
-        ]);
-
-        // Assign exteacher role
+        ]);        // Assign exteacher role
         $exteacherRole = Role::where('name', 'exteacher')->first();
         if ($exteacherRole && !$teacher->hasRole('exteacher')) {
             $teacher->assignRole($exteacherRole);
             $this->command->info('Teacher user created and assigned exteacher role');
-        }        // Create manager user
+        }
+
+        // Create manager user
         $manager = User::firstOrCreate([
             'email' => 'manager@example.com'
         ], [
@@ -80,7 +80,9 @@ class TestUsersSeeder extends Seeder
             'password' => Hash::make('password123'),
         ]);
 
-        $this->command->info('Regular user created without special roles');        $this->command->info('Test users created successfully!');
+        $this->command->info('Regular user created without special roles');
+
+        $this->command->info('Test users created successfully!');
         $this->command->info('Login credentials:');
         $this->command->info('Admin: admin@example.com / Qwe!2345');
         $this->command->info('Teacher: teacher@example.com / Qwe!2345');

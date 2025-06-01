@@ -29,15 +29,15 @@ class RolesAndPermissionsSeeder extends Seeder
             'manage_stock' => 'Manage Stock',
             'manage_customer_credit' => 'Manage Customer Credit',
             'hold_products' => 'Hold Products',
-            'show_exgrades' => 'View Student Grades',
+            'show_exgrades' => 'View All Student Grades',
             'edit_exgrades' => 'Edit Student Grades',
             'delete_exgrades' => 'Delete Student Grades',
+            'view_own_exgrades' => 'View Own Grades',
         ];
 
         foreach ($permissions as $name => $displayName) {
             Permission::firstOrCreate(
-                ['name' => $name, 'guard_name' => 'web'],
-                ['display_name' => $displayName]
+                ['name' => $name, 'guard_name' => 'web']
             );
         }
 
@@ -82,7 +82,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $exstudentRole = Role::firstOrCreate(['name' => 'exstudent', 'guard_name' => 'web']);
         
         // Assign permissions to exstudent role (view own grades only)
-        $exstudentPermissions = ['show_exgrades', 'view_own_profile'];
+        $exstudentPermissions = ['view_own_exgrades', 'view_own_profile'];
         $exstudentRole->syncPermissions($exstudentPermissions);
 
         $this->command->info('Roles and permissions created successfully.');
