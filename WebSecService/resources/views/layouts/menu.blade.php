@@ -16,6 +16,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products_list')}}">Products</a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('courses_list')}}">Courses</a>
+            </li>
+            @canany(['show_exgrades', 'view_own_exgrades'])
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('grades_list')}}">Grades</a>
+            </li>
+            @endcanany
             <li class="nav-item">
                 <a class="nav-link" href="{{route('courses_list')}}">Courses</a>
             </li>

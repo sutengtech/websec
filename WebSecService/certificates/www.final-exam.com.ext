@@ -1,0 +1,7 @@
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = www.final-exam.com
+DNS.2 = final-exam.com
