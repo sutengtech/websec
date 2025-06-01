@@ -57,10 +57,13 @@ class UsersController extends Controller {
 	    $user->password = bcrypt($request->password); //Secure
 	    $user->save();
 
+        /*
         $title = "Verification Link";
         $token = Crypt::encryptString(json_encode(['id' => $user->id, 'email' => $user->email]));
         $link = route("verify", ['token' => $token]);
         Mail::to($user->email)->send(new VerificationEmail($link, $user->name));
+        */
+
         return redirect('/');
 
     }
@@ -77,9 +80,10 @@ class UsersController extends Controller {
         $user = User::where('email', $request->email)->first();
         Auth::setUser($user);
 
+        /*
         if(!$user->email_verified_at)
             return redirect()->back()->withInput($request->input())->withErrors('Your email is not verified.');
-
+        */
 
         return redirect('/');
     }
@@ -161,7 +165,7 @@ class UsersController extends Controller {
 
         if(!auth()->user()->hasPermissionTo('delete_users')) abort(401);
 
-        //$user->delete();
+        $user->delete();
 
         return redirect()->route('users');
     }

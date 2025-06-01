@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2025 at 05:15 AM
+-- Generation Time: May 29, 2025 at 04:09 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,7 +38,7 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:5:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:12:\"display_name\";s:1:\"d\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:7:{i:0;a:5:{s:1:\"a\";i:1;s:1:\"b\";s:12:\"add_products\";s:1:\"c\";s:12:\"Add Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:1;a:5:{s:1:\"a\";i:2;s:1:\"b\";s:13:\"edit_products\";s:1:\"c\";s:13:\"Edit Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:5:{s:1:\"a\";i:3;s:1:\"b\";s:15:\"delete_products\";s:1:\"c\";s:15:\"Delete Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:5:{s:1:\"a\";i:4;s:1:\"b\";s:10:\"show_users\";s:1:\"c\";s:10:\"Show Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:2;}}i:4;a:5:{s:1:\"a\";i:5;s:1:\"b\";s:10:\"edit_users\";s:1:\"c\";s:10:\"Edit Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:2;}}i:5;a:5:{s:1:\"a\";i:7;s:1:\"b\";s:12:\"delete_users\";s:1:\"c\";s:12:\"Delete Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:5:{s:1:\"a\";i:8;s:1:\"b\";s:11:\"admin_users\";s:1:\"c\";s:11:\"Admin Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:2:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"Admin\";s:1:\"d\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:2;s:1:\"b\";s:8:\"Employee\";s:1:\"d\";s:3:\"web\";}}}', 1747188281);
+('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:5:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:12:\"display_name\";s:1:\"d\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:8:{i:0;a:5:{s:1:\"a\";i:1;s:1:\"b\";s:12:\"add_products\";s:1:\"c\";s:12:\"Add Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:1;a:5:{s:1:\"a\";i:2;s:1:\"b\";s:13:\"edit_products\";s:1:\"c\";s:13:\"Edit Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:5:{s:1:\"a\";i:3;s:1:\"b\";s:15:\"delete_products\";s:1:\"c\";s:15:\"Delete Products\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:5:{s:1:\"a\";i:4;s:1:\"b\";s:10:\"show_users\";s:1:\"c\";s:10:\"Show Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:2;}}i:4;a:5:{s:1:\"a\";i:5;s:1:\"b\";s:10:\"edit_users\";s:1:\"c\";s:10:\"Edit Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:2;}}i:5;a:5:{s:1:\"a\";i:7;s:1:\"b\";s:12:\"delete_users\";s:1:\"c\";s:12:\"Delete Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:5:{s:1:\"a\";i:8;s:1:\"b\";s:11:\"admin_users\";s:1:\"c\";s:11:\"Admin Users\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:7;a:5:{s:1:\"a\";i:9;s:1:\"b\";s:12:\"edit_courses\";s:1:\"c\";s:12:\"Edit Courses\";s:1:\"d\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:3;}}}s:5:\"roles\";a:3:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"Admin\";s:1:\"d\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:2;s:1:\"b\";s:8:\"Employee\";s:1:\"d\";s:3:\"web\";}i:2;a:3:{s:1:\"a\";i:3;s:1:\"b\";s:13:\"edumanager123\";s:1:\"d\";s:3:\"web\";}}}', 1747809847);
 
 -- --------------------------------------------------------
 
@@ -55,6 +55,32 @@ CREATE TABLE `cache_locks` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(32) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `max_degree` int(11) NOT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `code`, `name`, `max_degree`, `description`) VALUES
+(1, 'CRS112', 'Math', 100, NULL),
+(2, 'CRS113', 'Physics', 100, NULL),
+(3, 'CRS114', 'Mechanics', 100, NULL),
+(4, 'CRS115', 'English', 100, NULL),
+(5, 'CRS117', 'Chemistry', 100, NULL),
+(7, 'CET111', 'Computer Programming', 200, 'Computer Programming in Python');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -67,6 +93,32 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `course_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `degree` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`id`, `course_id`, `user_id`, `degree`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 90, '2025-05-19 01:42:15', '2025-05-20 04:06:07'),
+(3, 4, 1, 55, '2025-05-19 01:42:52', '2025-05-19 01:44:26'),
+(4, 1, 16, 55, '2025-05-19 01:44:41', '2025-05-19 01:44:41'),
+(5, 3, 38, 100, '2025-05-20 03:21:53', '2025-05-20 03:21:53'),
+(6, 1, 38, 55, '2025-05-20 03:22:11', '2025-05-20 03:22:22');
 
 -- --------------------------------------------------------
 
@@ -161,7 +213,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
 (2, 'App\\Models\\User', 16),
-(2, 'App\\Models\\User', 20);
+(2, 'App\\Models\\User', 20),
+(3, 'App\\Models\\User', 38);
 
 -- --------------------------------------------------------
 
@@ -324,7 +377,8 @@ INSERT INTO `permissions` (`id`, `name`, `display_name`, `guard_name`, `created_
 (4, 'show_users', 'Show Users', 'web', NULL, NULL),
 (5, 'edit_users', 'Edit Users', 'web', NULL, NULL),
 (7, 'delete_users', 'Delete Users', 'web', NULL, NULL),
-(8, 'admin_users', 'Admin Users', 'web', NULL, NULL);
+(8, 'admin_users', 'Admin Users', 'web', NULL, NULL),
+(9, 'edit_courses', 'Edit Courses', 'web', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -396,7 +450,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'web', NULL, NULL),
-(2, 'Employee', 'web', NULL, NULL);
+(2, 'Employee', 'web', NULL, NULL),
+(3, 'edumanager123', 'web', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -422,7 +477,8 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (5, 1),
 (5, 2),
 (7, 1),
-(8, 1);
+(8, 1),
+(9, 3);
 
 -- --------------------------------------------------------
 
@@ -444,15 +500,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('02wEA5qUS3ZRmzj5gXaicsFSQ9XW4zD7M35D61aJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiV0N6QUhQRVd4NHZ5TUZXMVpNd1dKdmJuUWdYRkpzTnFlaWw5QmVGaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20vbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1747118662),
-('4gRDLQUglB4wo5ZmUR1LztqRVpYxj9tcbk34EM4Q', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiN3hXSmNkMW05NzZ6Q0FYenZleE5YV1JYd2pkck5NYkxpUEpqQ1FUSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20vZXZlbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1747064425),
-('74ra6ZXaUy6l3eOOg85DaSPWQ7rzoWeBBUcgWAkn', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUUp3WEV5NXJpTTRFbng4Ujk3bEh3TzY1R3VNS2ZZYnkwbW9MQTYwMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTUxOiJodHRwOi8vd2Vic2Vjc2VydmljZS5sb2NhbGhvc3QuY29tL2NyeXB0b2dyYXBoeT9fdG9rZW49UUp3WEV5NXJpTTRFbng4Ujk3bEh3TzY1R3VNS2ZZYnkwbW9MQTYwMyZhY3Rpb249RW5jcnlwdCZkYXRhPVdlbGNvbWUlMjB0byUyMENyeXB0b2dyYXBoeSZyZXN1bHQ9Ijt9fQ==', 1746671284),
-('8faTVrbYFdbpZh7j908PLIQRPhwMycoeJaLl1Db2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidEF1eVNVV1Rxa3J5TTRGSWVUMEVnUVg3T2QyWnJ3YWNTZ0pSNENJZyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1747105660),
-('8p1FCXP6OR7dvvv0Cmb5hVnQiydfD0e6eFJiQ8EN', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiSEh0NWtpRzhqUjY2bTJuZ2hPUEdQNWs3empMVUJpYVgybXpUWmZZTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTUxOiJodHRwOi8vd2Vic2Vjc2VydmljZS5sb2NhbGhvc3QuY29tL2NyeXB0b2dyYXBoeT9fdG9rZW49SEh0NWtpRzhqUjY2bTJuZ2hPUEdQNWs3empMVUJpYVgybXpUWmZZTCZhY3Rpb249RW5jcnlwdCZkYXRhPVdlbGNvbWUlMjB0byUyMENyeXB0b2dyYXBoeSZyZXN1bHQ9Ijt9fQ==', 1747537708),
-('aSnonDTb3RIek6FVMWGLpDxgOT1rJYM4DZ0hBP2e', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibkpiUzNyZ3BnZzJodXAyVk5RYTUwNzBVdmc5dlpoRVo3cGg4ZmcwTyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20vbG9naW4iO319', 1747120185),
-('d5K0vEA26VBc57XTltS0rNUBmPvKhCjsqFmz0jKf', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiRzFtUWNXbDMxdDF2c1RBNURFcnVTZzdoVnZFbWs0dGIwOUVVenhndCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1747024622),
-('MhYxMvjv8Mv7LKboMlhBPZmtoKucu6QwHWDn5ODg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMFd4U0NLZHl3ZmpzQTgzNXFKaEJhc2Y4NDJjaFAyVElzN2lINWdNTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk2OiJodHRwOi8vd2Vic2Vjc2VydmljZS5sb2NhbGhvc3QuY29tL2NyeXB0b2dyYXBoeT9fdG9rZW49MFd4U0NLZHl3ZmpzQTgzNXFKaEJhc2Y4NDJjaFAyVElzN2lINWdNTCZhY3Rpb249S2V5UmVjaXZlJmRhdGE9RHN1N28lMkYxODFPQVpxQ0licFM2cUdvVGhuNnA0cjVJcmRiQTlrWVlweXdZY3hqZXZQT2l5OTAzdDFIc3o1ZnY5dEtWR1lmcmsxdDhvajFHeXNPVGluQ2NlMGZRc2JweVlFTGNEOTdmMCUyQmY4ZlBxYkc4cTFxbEVHcUdRQTRBV3ZjcW5FRyUyQiUyRnRlWVJxUlBDeGtwJTJGemI4VnpER1RlMU83ZEJKQXQ3aDBncXJVcm5TdW9zZDI1Y3pueXpzMDU4R2c4JTJGOVNwZEU2S0lFRWRZZmtleEIlMkJwUG1aS0t1YWRxbmNMWlFaMlJGUGdTZTN0UVJlclNQaXglMkJzaXV1dFpiMWxOb2RrcEZnc0tteXNnJTJCZXRYWXFBJTJCT2dMd0ZwTzJ3TXZ6JTJCVlpqcGppWWpkSFllRHJKOTJ2M3dKeG5KRFNDTm1vYVBFN0RHcUFmck96Rmp4TXV5YWRVSDE1ZyUzRCUzRCZyZXN1bHQ9Ijt9fQ==', 1746517959),
-('WC5aSWuk1Nv8zlAPOOOU0oZ3UJevZqRVpdWb4qGg', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZmY4WFBBN25sZTRUaUhwMUU5VFZ6ZTRSUjFFZnNNSEdvY2d1a2xMcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHBzOi8vd2Vic2Vjc2VydmljZS5sb2NhbGhvc3QuY29tL3dlYmNyeXB0byI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1746508965);
+('b5GnSQ3ikO7d3REqr7SMoo4tEJxlttog4Ke72wgo', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWUdXb3BubzJpekZzMzdlZEpHZlJNMzRSWU5XNFpSZXhMd3hMMDZLQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1748511354),
+('FAGk2IHZOEyV32dlyOnvxJkF2KEaYvXCCxwt8VZ4', 38, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiU2FRM0V2WHE3RmMwYnBGbUhMYUUxT2R1TmZGdzdrd2J4ODdTZWJvUiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly93ZWJzZWNzZXJ2aWNlLmxvY2FsaG9zdC5jb20vZ3JhZGVzIjt9czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo0NzoiaHR0cDovL3dlYnNlY3NlcnZpY2UubG9jYWxob3N0LmNvbS9jb3Vyc2VzL2VkaXQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozODt9', 1747728055);
 
 -- --------------------------------------------------------
 
@@ -503,11 +552,23 @@ ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `jobs`
@@ -642,10 +703,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -675,7 +748,7 @@ ALTER TABLE `participations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -693,7 +766,7 @@ ALTER TABLE `quizzes`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
