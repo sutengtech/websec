@@ -72,10 +72,28 @@
                         @if($grade->appeal_reason)
                             <br><small class="text-muted">Reason: {{Str::limit($grade->appeal_reason, 50)}}</small>
                         @endif
+                        @if($grade->appealed_at)
+                            <br><small class="text-muted">Submitted: {{$grade->appealed_at->format('M d, Y H:i')}}</small>
+                        @endif
                     @elseif($grade->appeal_status == 'approved')
                         <span class="badge bg-success">Approved</span>
+                        @if($grade->appeal_responded_at)
+                            <br><small class="text-muted">Approved on: {{$grade->appeal_responded_at->format('M d, Y H:i')}}</small>
+                        @endif
+                        @if($grade->appeal_response)
+                            <br><small class="text-muted">Response: {{Str::limit($grade->appeal_response, 50)}}</small>
+                        @endif
                     @elseif($grade->appeal_status == 'rejected')
                         <span class="badge bg-danger">Rejected</span>
+                        @if($grade->appeal_responded_at)
+                            <br><small class="text-muted">Rejected on: {{$grade->appeal_responded_at->format('M d, Y H:i')}}</small>
+                        @endif
+                        @if($grade->appeal_response)
+                            <br><small class="text-muted">Response: {{Str::limit($grade->appeal_response, 50)}}</small>
+                        @endif
+                    @elseif($grade->appeal_status == 'closed')
+                        <span class="badge bg-info">Appeal Closed</span>
+                        <br><small class="text-muted">Grade was modified</small>
                     @endif
                 </td>
                 @endcan

@@ -79,7 +79,17 @@ class GradesController extends Controller {
 	        'degree' => ['required', 'numeric', 'max:100']
 	    ]);
 
+		$isNewGrade = $grade === null;
 		$grade = $grade??new Grade();
+		
+		// Check if grade is being modified and has an active appeal
+		if (!$isNewGrade && isset($request->degree) && 
+			$grade->degree != $request->degree && 
+			in_array($grade->appeal_status, ['pending', 'approved', 'rejected'])) {
+			// Close the appeal if grade is being modified
+			$grade->appeal_status = 'closed';
+		}
+		
 		$grade->fill($request->all());
 		$grade->save();
 
