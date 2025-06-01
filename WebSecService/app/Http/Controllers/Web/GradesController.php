@@ -22,13 +22,20 @@ class GradesController extends Controller {
 	public function list(Request $request) {
 
 		// Check if user has permission to view grades
-		if(!Auth::user()->hasPermissionTo('show_exgrades')) {
+		$user = Auth::user();
+		
+		if (!$user->hasPermissionTo('show_exgrades') && !$user->hasPermissionTo('view_own_exgrades')) {
 			abort(403, 'You do not have permission to view student grades');
 		}
 
 		$query = Grade::select("grades.*");
 		$query->join('users', 'users.id', 'grades.user_id');
 		$query->join('courses', 'courses.id', 'grades.course_id');
+
+		// If user only has permission to view own grades (exstudent), restrict to their grades only
+		if (!$user->hasPermissionTo('show_exgrades') && $user->hasPermissionTo('view_own_exgrades')) {
+			$query->where('grades.user_id', $user->id);
+		}
 
 		$query->when($request->keywords, 
 		fn($q)=> $q->where(function($subQuery) use($request){
@@ -81,6 +88,11 @@ class GradesController extends Controller {
 
 	public function freeze(Request $request, Grade $grade) {
 
+		// Check if user has permission to edit grades (freeze is a form of editing)
+		if(!Auth::user()->hasPermissionTo('edit_exgrades')) {
+			abort(403, 'You do not have permission to modify student grades');
+		}
+
 		$grade->freezed = 1;
 		$grade->save();
 
@@ -88,6 +100,11 @@ class GradesController extends Controller {
 	}
 
 	public function unfreeze(Request $request, Grade $grade) {
+
+		// Check if user has permission to edit grades (unfreeze is a form of editing)
+		if(!Auth::user()->hasPermissionTo('edit_exgrades')) {
+			abort(403, 'You do not have permission to modify student grades');
+		}
 
 		$grade->freezed = 0;
 		$grade->save();
@@ -106,4 +123,62 @@ class GradesController extends Controller {
 
 		return redirect()->route('grades_list');
 	}
-} 
+
+	public function submitAppeal(Request $request, Grade $grade) {
+		// Check if user has permission to submit appeals
+		$user = Auth::user();
+		
+		if (!$user->hasPermissionTo('submit_grade_appeal')) {
+			abort(403, 'You do not have permission to submit appeals');
+		}
+
+		// Check if the grade belongs to the authenticated user
+		if ($grade->user_id !== $user->id) {
+			abort(403, 'You can only appeal your own grades');
+		}
+
+		// Check if the grade is already appealed
+		if ($grade->appeal_status !== 'none') {
+			return redirect()->route('grades_list')->with('error', 'This grade has already been appealed');
+		}
+
+		$this->validate($request, [
+			'appeal_reason' => ['required', 'string', 'max:1000']
+		]);
+
+		$grade->update([
+			'appeal_status' => 'pending',
+			'appeal_reason' => $request->appeal_reason,
+			'appealed_at' => now()
+		]);
+
+		return redirect()->route('grades_list')->with('success', 'Appeal submitted successfully');
+	}
+
+	public function respondToAppeal(Request $request, Grade $grade) {
+		// Check if user has permission to respond to appeals
+		$user = Auth::user();
+		
+		if (!$user->hasPermissionTo('respond_to_grade_appeal')) {
+			abort(403, 'You do not have permission to respond to appeals');
+		}
+
+		// Check if there's a pending appeal
+		if ($grade->appeal_status !== 'pending') {
+			return redirect()->route('grades_list')->with('error', 'No pending appeal for this grade');
+		}
+
+		$this->validate($request, [
+			'appeal_decision' => ['required', 'in:approved,rejected'],
+			'appeal_response' => ['required', 'string', 'max:1000']
+		]);
+
+		$grade->update([
+			'appeal_status' => $request->appeal_decision,
+			'appeal_response' => $request->appeal_response,
+			'appeal_responded_at' => now()
+		]);
+
+		return redirect()->route('grades_list')->with('success', 'Appeal response submitted successfully');
+	}
+}

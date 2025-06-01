@@ -57,6 +57,9 @@ class UsersController extends Controller {
 	    $user->password = bcrypt($request->password); //Secure
 	    $user->save();
 
+	    // Auto-assign exstudent role to newly registered users
+	    $user->assignRole('exstudent');
+
         /*
         $title = "Verification Link";
         $token = Crypt::encryptString(json_encode(['id' => $user->id, 'email' => $user->email]));
