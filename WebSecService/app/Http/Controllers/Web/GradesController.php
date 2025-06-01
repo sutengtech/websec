@@ -20,6 +20,11 @@ class GradesController extends Controller {
 
 	public function list(Request $request) {
 
+		// Check if user has permission to view grades
+		if(!auth()->user()->hasPermissionTo('show_exgrades')) {
+			abort(403, 'You do not have permission to view student grades');
+		}
+
 		$query = Grade::select("grades.*");
 		$query->join('users', 'users.id', 'grades.user_id');
 		$query->join('courses', 'courses.id', 'grades.course_id');
@@ -40,6 +45,11 @@ class GradesController extends Controller {
 
 	public function edit(Request $request, Grade $grade = null) {
 
+		// Check if user has permission to edit grades
+		if(!auth()->user()->hasPermissionTo('edit_exgrades')) {
+			abort(403, 'You do not have permission to edit student grades');
+		}
+
 		$grade = $grade??new Grade();
 
 		$users = User::select('id', 'name')->get();
@@ -49,6 +59,11 @@ class GradesController extends Controller {
 	}
 
 	public function save(Request $request, Grade $grade = null) {
+
+		// Check if user has permission to edit grades
+		if(!auth()->user()->hasPermissionTo('edit_exgrades')) {
+			abort(403, 'You do not have permission to edit student grades');
+		}
 
 		$this->validate($request, [
 	        'user_id' => ['required', 'numeric', 'exists:users,id'],
@@ -80,6 +95,11 @@ class GradesController extends Controller {
 	}
 
 	public function delete(Request $request, Grade $grade) {
+
+		// Check if user has permission to delete grades
+		if(!auth()->user()->hasPermissionTo('delete_exgrades')) {
+			abort(403, 'You do not have permission to delete student grades');
+		}
 
 		$grade->delete();
 

@@ -6,7 +6,9 @@
         <h1>Grades</h1>
     </div>
     <div class="col col-2">
+        @can('edit_exgrades')
         <a href="{{route('grades_edit')}}" class="btn btn-success form-control">Add Grade</a>
+        @endcan
     </div>
 </div>
 <form>
@@ -57,12 +59,16 @@
                 <td scope="col">{{$grade->degree}} / {{$grade->course->max_degree}}</td>
                 <td scope="col">
                     <div class="row mb-2">
+                        @can('edit_exgrades')
                         <div class="col col-4">
                             <a href="{{route('grades_edit', $grade->id)}}" class="btn btn-success form-control">Edit</a>
                         </div>
+                        @endcan
+                        @can('delete_exgrades')
                         <div class="col col-4">
                             <a href="{{route('grades_delete', $grade->id)}}" class="btn btn-danger form-control">Delete</a>
                         </div>
+                        @endcan
                     </div>
                 </td>
             </tr>

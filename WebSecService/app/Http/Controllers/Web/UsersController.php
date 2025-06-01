@@ -124,6 +124,10 @@ class UsersController extends Controller {
     
         $roles = [];
         foreach(Role::all() as $role) {
+            // Only admin can see and assign the 'exteacher' role
+            if($role->name === 'exteacher' && !auth()->user()->hasRole('Admin')) {
+                continue;
+            }
             $role->taken = ($user->hasRole($role->name));
             $roles[] = $role;
         }
@@ -148,6 +152,11 @@ class UsersController extends Controller {
         $user->save();
 
         if(auth()->user()->hasPermissionTo('admin_users')) {
+
+            // Check if user is trying to assign 'exteacher' role without being admin
+            if($request->roles && in_array('exteacher', $request->roles) && !auth()->user()->hasRole('Admin')) {
+                abort(403, 'Only admins can assign the exteacher role');
+            }
 
             $user->syncRoles($request->roles);
             $user->syncPermissions($request->permissions);
