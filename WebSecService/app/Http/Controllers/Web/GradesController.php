@@ -196,5 +196,3 @@ class GradesController extends Controller {
 		return redirect()->route('grades_list')->with('success', 'Appeal response submitted successfully');
 	}
 }
-} 
-
